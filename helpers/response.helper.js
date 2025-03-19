@@ -1,5 +1,3 @@
-// helpers/response.helper.js
-
 /**
  * Sends a success response.
  * @param {Object} res - Express response object.
@@ -31,6 +29,21 @@ exports.success = (res, data, message = 'Success', statusCode = 200) => {
   };
   
   /**
+   * Sends a created response (for resource creation).
+   * @param {Object} res - Express response object.
+   * @param {any} data - The created resource data.
+   * @param {string} [message='Resource created successfully'] - Optional message.
+   * @param {number} [statusCode=201] - HTTP status code.
+   */
+  exports.created = (res, data, message = 'Resource created successfully', statusCode = 201) => {
+    return res.status(statusCode).json({
+      status: 'success',
+      message,
+      data,
+    });
+  };
+  
+  /**
    * Sends an informational response.
    * @param {Object} res - Express response object.
    * @param {any} data - The data to return.
@@ -55,21 +68,6 @@ exports.success = (res, data, message = 'Success', statusCode = 200) => {
   exports.warning = (res, data, message = 'Warning', statusCode = 400) => {
     return res.status(statusCode).json({
       status: 'warning',
-      message,
-      data,
-    });
-  };
-  
-  /**
-   * Sends a created response (when a resource is successfully created).
-   * @param {Object} res - Express response object.
-   * @param {any} data - The created resource data.
-   * @param {string} [message='Resource created successfully'] - Optional message.
-   * @param {number} [statusCode=201] - HTTP status code.
-   */
-  exports.created = (res, data, message = 'Resource created successfully', statusCode = 201) => {
-    return res.status(statusCode).json({
-      status: 'success',
       message,
       data,
     });
