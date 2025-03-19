@@ -5,6 +5,7 @@ const port = process.env.PORT || 9000;7
 
 
 const postsRouter = require('./routes/posts.route');
+const usersRouter = require('./routes/users.route');
 
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/posts', postsRouter)
+app.use('/register', usersRouter)
 
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`)
